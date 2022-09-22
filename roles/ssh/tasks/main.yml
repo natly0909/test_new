@@ -7,6 +7,14 @@
     state: present
   notify: restart ssh
 
+- name: change ssh port
+  lineinfile: 
+    dest: /etc/ssh/sshd_config
+    regexp: "^#Port 22"
+    line: "Port 1234"
+    state: present
+  notify: restart ssh
+
 - name: Disable password authentication
   lineinfile:
     dest: /etc/ssh/sshd_config
